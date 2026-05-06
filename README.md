@@ -1,131 +1,60 @@
-# 🛍️ Customer Segmentation using Clustering
-BY:Osman Osama
-> Comparing **K-Means** vs **Agglomerative Hierarchical Clustering** on Mall Customer data
+# 🛍️ Customer Segmentation — Interactive GUI
+
+> **Data Mining Course Project** | Egyptian Chinese University (ECU)  
+> K-Means & Agglomerative Clustering with an interactive ipywidgets dashboard
 
 ---
 
-## 📌 Project Overview
+## 📌 Overview
 
-This project applies unsupervised machine learning techniques to segment mall customers based on their **Annual Income** and **Spending Score**. The goal is to identify distinct customer groups that can guide targeted marketing strategies.
-
-Two clustering algorithms are implemented and compared:
-- **K-Means Clustering** — partition-based, fast, scalable
-- **Agglomerative Hierarchical Clustering** — bottom-up, dendrogram-driven
+This project applies unsupervised machine learning to segment mall customers based on their **Annual Income** and **Spending Score**, using the classic Mall Customer dataset. The notebook features a fully interactive GUI built with `ipywidgets` — no separate app needed, just run the cells.
 
 ---
 
-## 📂 Repository Structure
+## ✨ Features
 
-```
-customer-segmentation/
-│
-├── notebooks/
-│   └── Customer_Segmentation_Clustering.ipynb   # Main analysis notebook
-│
-├── data/
-│   └── Mall_Customers.csv                        # Dataset (place here before running)
-│
-├── images/                                        # Auto-generated plots
-│   ├── elbow_method.png
-│   ├── silhouette_method.png
-│   ├── kmeans_income_spending.png
-│   ├── kmeans_age_spending.png
-│   ├── dendrogram.png
-│   ├── agg_income_spending.png
-│   ├── agg_age_spending.png
-│   └── comparison_plot.png
-│
-├── requirements.txt
-└── README.md
-```
+| Tab | Description |
+|-----|-------------|
+| 📊 **Optimal K Finder** | Elbow Method + Silhouette Scores with interactive K slider |
+| 🔵 **K-Means Explorer** | Scatter plot with switchable axes and centroid toggle |
+| 🌳 **Agglomerative + Dendrogram** | Ward linkage dendrogram with draggable cut line |
+| 🏷️ **Segment Profiles Dashboard** | 6-chart dashboard comparing cluster profiles (toggle K-Means / Agglomerative) |
+| ⚖️ **Algorithm Comparison** | Side-by-side silhouette score comparison |
+| 🔮 **Predict Customer Segment** | Enter income & spending score → get instant segment prediction + marketing strategy |
+| 📋 **Raw Data Explorer** | Filter by cluster and browse the dataset |
 
 ---
 
-## 📊 Dataset
+## 🗂️ Dataset
 
-**Mall Customer Segmentation Data**  
-Source: [Kaggle — Mall Customers Dataset](https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python)
+**Mall Customer Segmentation** — [`Mall_Customers.csv`](https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python)
 
-| Feature | Description |
-|---|---|
+| Column | Description |
+|--------|-------------|
 | `CustomerID` | Unique customer identifier |
 | `Gender` | Male / Female |
 | `Age` | Customer age |
-| `Annual Income (k$)` | Annual income in thousands of USD |
-| `Spending Score (1-100)` | Score assigned by the mall (1 = low, 100 = high) |
+| `Annual Income (k$)` | Annual income in thousands USD |
+| `Spending Score (1–100)` | Mall-assigned spending behavior score |
 
-> **Features used for clustering:** `Annual Income (k$)` and `Spending Score (1-100)`
-
----
-
-## ⚙️ Methodology
-
-### Step 1 — Determine Optimal K
-Two methods are used to confirm the ideal number of clusters:
-
-| Method | Optimal K Found |
-|---|---|
-| Elbow Method (Inertia/WCSS) | **5** |
-| Silhouette Score | **5** |
-| Dendrogram Cut (Agglomerative) | **5** |
-
-All three methods converge on **K = 5**, confirming the choice.
-
-### Step 2 — Apply Clustering
-- **K-Means** with `k-means++` initialization, `random_state=42`
-- **Agglomerative** with Ward linkage, 5 clusters
-
-### Step 3 — Evaluate & Compare
-Silhouette scores are computed for both algorithms on the same data.
+> ⚠️ Download `Mall_Customers.csv` from Kaggle and place it in the same folder as the notebook.
 
 ---
 
-## 🏆 Results
+## 🧠 Algorithms
 
-### Algorithm Comparison
-
-| Algorithm | Pros | Cons |
-|---|---|---|
-| **K-Means** | Fast, scalable, clear centroids | Sensitive to outliers, requires K upfront |
-| **Agglomerative** | No K needed initially, hierarchical view | Slower on large data, no centroid info |
-
-> **K-Means achieves a slightly higher Silhouette Score** on this dataset, producing well-separated and visually distinct clusters.
-
-### 🧩 Customer Segments Identified
-
-| Cluster | Income | Spending | Profile | Marketing Strategy |
-|---|---|---|---|---|
-| 0 | Low | Low | Careful customers | Price-sensitive promotions |
-| 1 | Low | High | Impulsive buyers | Deals & loyalty programs |
-| 2 | Medium | Medium | Average customers | Standard campaigns |
-| 3 | High | Low | Potential savers | Exclusive & premium offers |
-| 4 | High | High | VIP targets ⭐ | Premium marketing |
-
----
-
-## 🖼️ Key Visualizations
-
-| Plot | Description |
-|---|---|
-| Elbow Method | Inertia vs K to find the "elbow" |
-| Silhouette Method | Score vs K to confirm optimal clusters |
-| K-Means Scatter (Income vs Spending) | Clusters + centroids |
-| K-Means Scatter (Age vs Spending) | Age-based segmentation |
-| Dendrogram | Hierarchical view of cluster merging |
-| Agglomerative Scatter (Income vs Spending) | Comparison with K-Means |
-| Side-by-Side Comparison | K-Means vs Agglomerative final view |
+- **K-Means Clustering** (k-means++ init, k=5)
+- **Agglomerative Clustering** (Ward linkage, n=5)
+- **Evaluation metric:** Silhouette Score
 
 ---
 
 ## 🚀 Getting Started
 
-### Prerequisites
-Make sure you have Python 3.8+ installed.
-
-### 1. Clone the repository
+### 1. Clone the repo
 ```bash
-git clone https://github.com/YOUR_USERNAME/customer-segmentation.git
-cd customer-segmentation
+git clone https://github.com/YOUR_USERNAME/customer-segmentation-gui.git
+cd customer-segmentation-gui
 ```
 
 ### 2. Install dependencies
@@ -134,54 +63,74 @@ pip install -r requirements.txt
 ```
 
 ### 3. Add the dataset
-Download `Mall_Customers.csv` from [Kaggle](https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python) and place it in the `data/` folder.
+Download `Mall_Customers.csv` from [Kaggle](https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python) and place it in the root folder.
 
 ### 4. Run the notebook
 ```bash
-jupyter notebook notebooks/Customer_Segmentation_Clustering.ipynb
+jupyter notebook Customer_Segmentation_GUI.ipynb
 ```
 
-Or open it directly in [Google Colab](https://colab.research.google.com/).
+> **Tip:** Run all cells top to bottom. The interactive widgets activate after each cell executes.
 
 ---
 
-## 🛠️ Technologies Used
+## 📦 Requirements
 
-![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=flat&logo=python&logoColor=white)
-![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=flat&logo=scikit-learn&logoColor=white)
-![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white)
-![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy&logoColor=white)
-![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=flat)
-![Seaborn](https://img.shields.io/badge/Seaborn-4C72B0?style=flat)
-![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=flat&logo=jupyter&logoColor=white)
+```
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+scipy
+ipywidgets
+jupyter
+```
 
-| Library | Purpose |
-|---|---|
-| `pandas` | Data loading & manipulation |
-| `numpy` | Numerical operations |
-| `scikit-learn` | K-Means, Agglomerative, Silhouette Score |
-| `scipy` | Dendrogram & linkage |
-| `matplotlib` | Plotting |
-| `seaborn` | Styled visualizations |
+---
+
+## 📊 Results
+
+| Algorithm | Silhouette Score |
+|-----------|-----------------|
+| K-Means ✅ | ~0.554 |
+| Agglomerative | ~0.551 |
+
+**K-Means** produces slightly better-defined clusters on this dataset.
+
+### Identified Segments
+
+| Cluster | Segment | Profile |
+|---------|---------|---------|
+| 0 | Careful Customers | Low Income · Low Spending |
+| 1 | Impulsive Buyers | Low Income · High Spending |
+| 2 | Average Customers | Medium Income · Medium Spending |
+| 3 | Potential Savers | High Income · Low Spending |
+| 4 | VIP Targets ⭐ | High Income · High Spending |
+
+---
+
+## 🗃️ Project Structure
+
+```
+customer-segmentation-gui/
+│
+├── Customer_Segmentation_GUI.ipynb   # Main notebook
+├── Mall_Customers.csv                # Dataset (download separately)
+├── requirements.txt
+└── README.md
+```
 
 ---
 
 ## 👨‍💻 Author
 
 **Osman Osama**  
-3rd Year Computer Science Student — Data Science Track  
-Egyptian Chinese University (ECU), Cairo, Egypt  
-Founder, [Data Wizards Community](https://github.com/osmanosama227-glitch)
-
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/osmanosama227-glitch)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/https://www.linkedin.com/in/osman-hegazy-5538262b0)
+Computer Science — Data Science Track, Egyptian Chinese University  
+Founder, [Data Wizards](https://github.com/osmanosama227-glitch) Community
 
 ---
 
 ## 📄 License
 
-
----
-
-
-
+This project is for academic purposes.
