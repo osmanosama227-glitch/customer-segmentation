@@ -1,53 +1,24 @@
+# Dataset (download separately from Kaggle)
+Mall_Customers.csv
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
 # Python
 __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
-.Python
-*.egg
-*.egg-info/
-dist/
-build/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-*.manifest
-*.spec
-
-# Jupyter Notebook
-.ipynb_checkpoints/
-*.ipynb_checkpoints
-
-# Virtual environments
-venv/
-env/
-ENV/
-.venv/
 .env
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
+.venv
+env/
+venv/
 
 # OS
 .DS_Store
 Thumbs.db
-desktop.ini
 
-# Data (avoid committing large datasets)
-data/*.csv
-data/*.xlsx
-data/*.json
-
-# Generated images (optional — remove if you want to commit them)
-# images/
-
-# Logs
-*.log
+# IDE
+.vscode/
+.idea/
